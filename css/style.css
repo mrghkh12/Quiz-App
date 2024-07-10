@@ -15,3 +15,49 @@ body{
     border-radius: 10px;
     padding: 30px;
 }
+.app-container .title{
+    font-size: 25px;
+    font-weight: 600;
+    color: #001e4d;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+}
+.app-container .quiz-section{
+    padding: 20px 0;
+
+}
+.app-container .quiz-section #question{
+    font-size: 18px;
+    color: #001e4d;
+    font-weight: 600;
+}
+.app-container .quiz-section .answer{
+    background-color: #fff;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.app-container .quiz-section .answer:hover{
+    background: #222;
+    color: #fff;
+}
+
+#next-btn{
+    background: #001e4d;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+}
