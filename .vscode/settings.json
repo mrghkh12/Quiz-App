@@ -1,3 +1,7 @@
 {
-  "conventionalCommits.scopes": ["index.htm & style.css", "index.html"]
+  "conventionalCommits.scopes": [
+    "index.htm & style.css",
+    "index.html",
+    "style.css"
+  ]
 }
