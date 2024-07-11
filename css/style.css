@@ -44,11 +44,13 @@ body{
     cursor: pointer;
     transition: 0.5s;
 }
-.app-container .quiz-section .answer:hover{
+.app-container .quiz-section .answer:hover:not([disabled]){
     background: #222;
     color: #fff;
 }
-
+.quiz-section .answer:disabled{
+    cursor: no-drop;
+}
 #next-btn{
     background: #001e4d;
     color: #fff;
@@ -60,4 +62,10 @@ body{
     border-radius: 4px;
     cursor: pointer;
     display: none;
+}
+.quiz-section .answer.trueAnswer{
+    background: #9aeabc;
+}
+.quiz-section .answer.falseAnswer{
+    background: #ff9393;
 }

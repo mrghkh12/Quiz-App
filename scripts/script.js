@@ -12,9 +12,9 @@ const questionDataList = [
       "Android Development Kit",
       "IOS Development Kit",
       "Web Development Kit",
-      "SDK to build beautiful IOS, Android, Web & Desktop Native Apps",
+      "SDK to build beautiful IOS, Android, Web &amp; Desktop Native Apps",
     ],
-    answer: "SDK to build beautiful IOS, Android, Web & Desktop Native Apps",
+    answer: "SDK to build beautiful IOS, Android, Web &amp; Desktop Native Apps",
   },
   {
     question: "Which programing language is used by Flutter",
@@ -97,11 +97,30 @@ const showQuizData = (currentQuestion) =>{
         let optionBtn = $.createElement("button")
         optionBtn.innerHTML = option
         optionBtn.classList.add("answer")
-
+        optionBtn.addEventListener('click' , e => {
+            checkAnswer(currentQuestion.answer , e.target)
+        })
 
         answerBtnContainer.appendChild(optionBtn)
     })
 }
 
+const checkAnswer = (answer,userChoiceElem) =>{
+    let answerBtnList = $.querySelectorAll('.answer')
+    if(answer == userChoiceElem.innerHTML){
+        userChoiceElem.classList.add("trueAnswer")
+        answerBtnList.forEach(answerBtn => {
+            answerBtn.disabled = true
+        })
+    }else{
+        userChoiceElem.classList.add("falseAnswer")
+        answerBtnList.forEach(answerBtn => {
+            answerBtn.disabled = true
+            if(answer == answerBtn.innerHTML){
+                answerBtn.classList.add("trueAnswer")
+            }
+        })
+    }
+}
 
 window.addEventListener('load' , quizSelector)
