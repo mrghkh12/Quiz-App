@@ -37,11 +37,6 @@ const questionDataList = [
     answer: "Motherboard",
   },
   {
-    question: "Which of these is not a peripheral, in computer terms?",
-    options: ["Keyboard", "Mouse", "Motherboard", "Monitor"],
-    answer: "Motherboard",
-  },
-  {
     question:
       "A network designed to allow communication within an organization is called:",
     options: [
@@ -86,6 +81,7 @@ const quizSelector = () => {
         let currentQuestionIndex = Math.floor(Math.random() * questionDataList.length)
         let currentQuestion = questionDataList.splice(currentQuestionIndex , 1)
         showQuizData(currentQuestion[0]);
+        updateScore()
     }else{
         console.log('end');
     }
@@ -114,6 +110,7 @@ const checkAnswer = (answer,userChoiceElem) =>{
         answerBtnList.forEach(answerBtn => {
             answerBtn.disabled = true
         })
+        scoreAnswer++
     }else{
         userChoiceElem.classList.add("falseAnswer")
         answerBtnList.forEach(answerBtn => {
@@ -127,5 +124,9 @@ const checkAnswer = (answer,userChoiceElem) =>{
 }
 
 nextQuestionBtn.addEventListener('click' , quizSelector)
+
+const updateScore = () => {
+    $.querySelector('.score').innerHTML = scoreAnswer
+}
 
 window.addEventListener('load' , quizSelector)
