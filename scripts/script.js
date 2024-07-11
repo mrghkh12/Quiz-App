@@ -14,7 +14,8 @@ const questionDataList = [
       "Web Development Kit",
       "SDK to build beautiful IOS, Android, Web &amp; Desktop Native Apps",
     ],
-    answer: "SDK to build beautiful IOS, Android, Web &amp; Desktop Native Apps",
+    answer:
+      "SDK to build beautiful IOS, Android, Web &amp; Desktop Native Apps",
   },
   {
     question: "Which programing language is used by Flutter",
@@ -69,76 +70,77 @@ const questionDataList = [
   },
 ];
 
-const questionElem = $.querySelector('#question');
-const answerBtnContainer = $.querySelector("#answer-btns")
-const nextQuestionBtn = $.querySelector("#next-btn")
-const endQuizBtn = $.querySelector("#end-btn")
-let scoreAnswer = 0
-let counterQuestion = 0
+const questionElem = $.querySelector("#question");
+const answerBtnContainer = $.querySelector("#answer-btns");
+const nextQuestionBtn = $.querySelector("#next-btn");
+const endQuizBtn = $.querySelector("#end-btn");
+let scoreAnswer = 0;
+let counterQuestion = 0;
 
 const quizSelector = () => {
-    if(questionDataList.length > 0){
-        counterQuestion++;
-        let currentQuestionIndex = Math.floor(Math.random() * questionDataList.length)
-        let currentQuestion = questionDataList.splice(currentQuestionIndex , 1)
-        showQuizData(currentQuestion[0]);
-        updateScore()
-    }else{
-        finishQuiz()
-    }
-}
+  if (questionDataList.length > 0) {
+    counterQuestion++;
+    let currentQuestionIndex = Math.floor(
+      Math.random() * questionDataList.length
+    );
+    let currentQuestion = questionDataList.splice(currentQuestionIndex, 1);
+    showQuizData(currentQuestion[0]);
+    updateScore();
+  } else {
+    finishQuiz();
+  }
+};
 
-const showQuizData = (currentQuestion) =>{
-    questionElem.innerHTML = counterQuestion + ". " + currentQuestion.question
-    answerBtnContainer.innerHTML = ''
-    nextQuestionBtn.style.display = 'none'
-    currentQuestion.options.forEach(option => {
-        let optionBtn = $.createElement("button")
-        optionBtn.innerHTML = option
-        optionBtn.classList.add("answer")
-        optionBtn.addEventListener('click' , e => {
-            checkAnswer(currentQuestion.answer , e.target)
-        })
+const showQuizData = (currentQuestion) => {
+  questionElem.innerHTML = counterQuestion + ". " + currentQuestion.question;
+  answerBtnContainer.innerHTML = "";
+  nextQuestionBtn.style.display = "none";
+  currentQuestion.options.forEach((option) => {
+    let optionBtn = $.createElement("button");
+    optionBtn.innerHTML = option;
+    optionBtn.classList.add("answer");
+    optionBtn.addEventListener("click", (e) => {
+      checkAnswer(currentQuestion.answer, e.target);
+    });
 
-        answerBtnContainer.appendChild(optionBtn)
-    })
-}
+    answerBtnContainer.appendChild(optionBtn);
+  });
+};
 
-const checkAnswer = (answer,userChoiceElem) =>{
-    let answerBtnList = $.querySelectorAll('.answer')
-    if(answer == userChoiceElem.innerHTML){
-        userChoiceElem.classList.add("trueAnswer")
-        answerBtnList.forEach(answerBtn => {
-            answerBtn.disabled = true
-        })
-        scoreAnswer++
-    }else{
-        userChoiceElem.classList.add("falseAnswer")
-        answerBtnList.forEach(answerBtn => {
-            answerBtn.disabled = true
-            if(answer == answerBtn.innerHTML){
-                answerBtn.classList.add("trueAnswer")
-            }
-        })
-    }
-    nextQuestionBtn.style.display = 'block'
-}
+const checkAnswer = (answer, userChoiceElem) => {
+  let answerBtnList = $.querySelectorAll(".answer");
+  if (answer == userChoiceElem.innerHTML) {
+    userChoiceElem.classList.add("trueAnswer");
+    answerBtnList.forEach((answerBtn) => {
+      answerBtn.disabled = true;
+    });
+    scoreAnswer++;
+  } else {
+    userChoiceElem.classList.add("falseAnswer");
+    answerBtnList.forEach((answerBtn) => {
+      answerBtn.disabled = true;
+      if (answer == answerBtn.innerHTML) {
+        answerBtn.classList.add("trueAnswer");
+      }
+    });
+  }
+  nextQuestionBtn.style.display = "block";
+};
 
 const updateScore = () => {
-    $.querySelector('.score').innerHTML = scoreAnswer
-}
+  $.querySelector(".score").innerHTML = scoreAnswer;
+};
 
-const finishQuiz = () =>{
-    questionElem.innerHTML = `you scored ${scoreAnswer} out of ${counterQuestion
-} question!`
-answerBtnContainer.innerHTML = ''
-endQuizBtn.style.display = 'none'
-nextQuestionBtn.style.display = 'block'
-nextQuestionBtn.innerHTML = 'Play Again'
-nextQuestionBtn.addEventListener('click' , ()=> window.location.reload())
-}
+const finishQuiz = () => {
+  questionElem.innerHTML = `you scored ${scoreAnswer} out of ${counterQuestion} question!`;
+  answerBtnContainer.innerHTML = "";
+  endQuizBtn.style.display = "none";
+  nextQuestionBtn.style.display = "block";
+  nextQuestionBtn.innerHTML = "Play Again";
+  nextQuestionBtn.addEventListener("click", () => window.location.reload());
+};
 
-nextQuestionBtn.addEventListener('click' , quizSelector)
-endQuizBtn.addEventListener('click' , finishQuiz)
+nextQuestionBtn.addEventListener("click", quizSelector);
+endQuizBtn.addEventListener("click", finishQuiz);
 
-window.addEventListener('load' , quizSelector)
+window.addEventListener("load", quizSelector);
