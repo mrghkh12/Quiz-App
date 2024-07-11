@@ -72,6 +72,7 @@ const questionDataList = [
 const questionElem = $.querySelector('#question');
 const answerBtnContainer = $.querySelector("#answer-btns")
 const nextQuestionBtn = $.querySelector("#next-btn")
+const endQuizBtn = $.querySelector("#end-btn")
 let scoreAnswer = 0
 let counterQuestion = 0
 
@@ -123,18 +124,21 @@ const checkAnswer = (answer,userChoiceElem) =>{
     nextQuestionBtn.style.display = 'block'
 }
 
-nextQuestionBtn.addEventListener('click' , quizSelector)
-
 const updateScore = () => {
     $.querySelector('.score').innerHTML = scoreAnswer
 }
 
 const finishQuiz = () =>{
     questionElem.innerHTML = `you scored ${scoreAnswer} out of ${counterQuestion
-}!`
+} question!`
 answerBtnContainer.innerHTML = ''
+endQuizBtn.style.display = 'none'
+nextQuestionBtn.style.display = 'block'
 nextQuestionBtn.innerHTML = 'Play Again'
 nextQuestionBtn.addEventListener('click' , ()=> window.location.reload())
 }
+
+nextQuestionBtn.addEventListener('click' , quizSelector)
+endQuizBtn.addEventListener('click' , finishQuiz)
 
 window.addEventListener('load' , quizSelector)
