@@ -93,6 +93,8 @@ const quizSelector = () => {
 
 const showQuizData = (currentQuestion) =>{
     questionElem.innerHTML = counterQuestion + ". " + currentQuestion.question
+    answerBtnContainer.innerHTML = ''
+    nextQuestionBtn.style.display = 'none'
     currentQuestion.options.forEach(option => {
         let optionBtn = $.createElement("button")
         optionBtn.innerHTML = option
@@ -121,6 +123,9 @@ const checkAnswer = (answer,userChoiceElem) =>{
             }
         })
     }
+    nextQuestionBtn.style.display = 'block'
 }
+
+nextQuestionBtn.addEventListener('click' , quizSelector)
 
 window.addEventListener('load' , quizSelector)
