@@ -85,9 +85,23 @@ const quizSelector = () => {
         counterQuestion++;
         let currentQuestionIndex = Math.floor(Math.random() * questionDataList.length)
         let currentQuestion = questionDataList.splice(currentQuestionIndex , 1)
-        console.log(currentQuestion[0].question);
+        showQuizData(currentQuestion[0]);
     }else{
         console.log('end');
     }
 }
-quizSelector()
+
+const showQuizData = (currentQuestion) =>{
+    questionElem.innerHTML = counterQuestion + ". " + currentQuestion.question
+    currentQuestion.options.forEach(option => {
+        let optionBtn = $.createElement("button")
+        optionBtn.innerHTML = option
+        optionBtn.classList.add("answer")
+
+
+        answerBtnContainer.appendChild(optionBtn)
+    })
+}
+
+
+window.addEventListener('load' , quizSelector)
