@@ -56,17 +56,34 @@ body{
 .quiz-section .answer:disabled{
     cursor: no-drop;
 }
-#next-btn{
+.actions{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.actions #next-btn{
     background: #001e4d;
     color: #fff;
     font-weight: 500;
     width: 150px;
     border: 0;
     padding: 10px;
-    margin: 20px auto 0;
+    margin: 0 10px;
     border-radius: 4px;
     cursor: pointer;
     display: none;
+}
+.actions #end-btn{
+    background: #910101;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
 }
 .quiz-section .answer.trueAnswer{
     background: #9aeabc;
