@@ -83,7 +83,7 @@ const quizSelector = () => {
         showQuizData(currentQuestion[0]);
         updateScore()
     }else{
-        console.log('end');
+        finishQuiz()
     }
 }
 
@@ -127,6 +127,14 @@ nextQuestionBtn.addEventListener('click' , quizSelector)
 
 const updateScore = () => {
     $.querySelector('.score').innerHTML = scoreAnswer
+}
+
+const finishQuiz = () =>{
+    questionElem.innerHTML = `you scored ${scoreAnswer} out of ${counterQuestion
+}!`
+answerBtnContainer.innerHTML = ''
+nextQuestionBtn.innerHTML = 'Play Again'
+nextQuestionBtn.addEventListener('click' , ()=> window.location.reload())
 }
 
 window.addEventListener('load' , quizSelector)
