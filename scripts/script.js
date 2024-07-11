@@ -77,5 +77,17 @@ const questionDataList = [
 const questionElem = $.querySelector('#question');
 const answerBtnContainer = $.querySelector("#answer-btns")
 const nextQuestionBtn = $.querySelector("#next-btn")
-const scoreAnswer = 0
-const counterQuestion = 0
+let scoreAnswer = 0
+let counterQuestion = 0
+
+const quizSelector = () => {
+    if(questionDataList.length > 0){
+        counterQuestion++;
+        let currentQuestionIndex = Math.floor(Math.random() * questionDataList.length)
+        let currentQuestion = questionDataList.splice(currentQuestionIndex , 1)
+        console.log(currentQuestion[0].question);
+    }else{
+        console.log('end');
+    }
+}
+quizSelector()
