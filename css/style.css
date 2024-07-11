@@ -15,12 +15,17 @@ body{
     border-radius: 10px;
     padding: 30px;
 }
-.app-container .title{
-    font-size: 25px;
-    font-weight: 600;
-    color: #001e4d;
+.app-container .quizAppHeader{
     border-bottom: 1px solid #333;
     padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    color: #001e4d;
+    font-weight: 600;
+    justify-content: space-between;
+}
+.app-container .quizAppHeader .title{
+    font-size: 25px;
 }
 .app-container .quiz-section{
     padding: 20px 0;
